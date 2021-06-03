@@ -18,7 +18,7 @@ class TwoFactorCache(CacheInterface):
 
     def add(self, key, value):
         self.cache.add(key, value)
-        self.redis.append(key, value)
+        self.redis.set(key, value)
 
     def get(self, key):
         value = self.cache.get(key)

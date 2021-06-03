@@ -8,7 +8,7 @@ from invoker.cache.CacheInterface import CacheInterface
 
 
 class SynchronizedCache(CacheInterface):
-    """Thread safe local cache"""
+    """Thread safe local cache with ttl"""
     orderedDict = OrderedDict()
     lock = Lock()
 
