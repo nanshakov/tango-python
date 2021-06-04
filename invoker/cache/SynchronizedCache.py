@@ -15,7 +15,7 @@ class SynchronizedCache(CacheInterface):
     def __init__(self, ttl_in_sec):
         """Constructor"""
         self.ttl_in_sec = ttl_in_sec
-        threading.Thread(target=self.__cleanup, args=(ttl_in_sec,), daemon=True).start()
+        threading.Thread(name='__cleanup', target=self.__cleanup, args=(ttl_in_sec,), daemon=True).start()
 
     def add(self, key, value):
         self.lock.acquire()
