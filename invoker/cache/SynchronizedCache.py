@@ -1,3 +1,4 @@
+import logging
 import threading
 import time
 from collections import OrderedDict
@@ -41,7 +42,7 @@ class SynchronizedCache(CacheInterface):
         """Delete an old data without full scan"""
         ttl_in_ms = ttl_in_sec * 1000
         while True:
-            time.sleep(ttl_in_sec)
+            logging.debug("cleanup action...")
             current_ts = self.__current_timestamp_in_ms()
             self.lock.acquire()
             for key, value in self.orderedDict.items():
@@ -50,3 +51,4 @@ class SynchronizedCache(CacheInterface):
                 else:
                     self.orderedDict.pop(key, None)
             self.lock.release()
+            time.sleep(ttl_in_sec)
