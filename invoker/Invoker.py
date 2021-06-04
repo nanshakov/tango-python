@@ -2,9 +2,9 @@ import logging
 
 from flask import Flask, request, jsonify, abort
 
-from invoker.cache.TwoFactorCache import TwoFactorCache
-from invoker.config.LocalCacheConfig import LocalCacheConfig
-from invoker.config.RedisConfig import RedisConfig
+from cache.TwoFactorCache import TwoFactorCache
+from config.LocalCacheConfig import LocalCacheConfig
+from config.RedisConfig import RedisConfig
 
 app = Flask(__name__)
 
@@ -35,7 +35,7 @@ def resource_not_found(e):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=8080)
 
 
 def reverse_number(n):

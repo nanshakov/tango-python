@@ -19,5 +19,10 @@ b) Второй сервис (INVOKER):
 
 # Запуск
 ## howto
+### Билд
+```gcloud builds submit --tag gcr.io/PROJECT-ID/Invoker```
+```gcloud builds submit --tag gcr.io/PROJECT-ID/Generator```
 
+```gcloud builds submit --tag gcr.io/magnetic-guild-315806/invoker```
+```gcloud builds submit --tag gcr.io/magnetic-guild-315806/generator```
 ## Примеры команд

@@ -6,7 +6,7 @@ from random import uniform
 import redis as redis
 from flask import Flask
 
-from generator.config.RedisConfig import RedisConfig
+from config.RedisConfig import RedisConfig
 
 app = Flask(__name__)
 
@@ -32,5 +32,5 @@ def send_to_redis(timeout, users):
 
 if __name__ == '__main__':
     with open('users.txt') as reader:
-        threading.Thread(name='send_to_redis', target=send_to_redis, args=(1, reader.readlines()), daemon=True).start()
-    app.run()
+        threading.Thread(name='send_to_redis', target=send_to_redis, args=(1, [user.strip('\n') for user in reader.readlines()]), daemon=True).start()
+    app.run(host='0.0.0.0', port=8080)

@@ -1,9 +1,9 @@
 import redis
 
-from invoker.cache.CacheInterface import CacheInterface
-from invoker.cache.SynchronizedCache import SynchronizedCache
-from invoker.config.LocalCacheConfig import LocalCacheConfig
-from invoker.config.RedisConfig import RedisConfig
+from cache.CacheInterface import CacheInterface
+from cache.SynchronizedCache import SynchronizedCache
+from config import RedisConfig
+from config import LocalCacheConfig
 
 
 class TwoFactorCache(CacheInterface):

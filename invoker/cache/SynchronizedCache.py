@@ -5,7 +5,7 @@ from collections import OrderedDict
 from datetime import datetime
 from multiprocessing import Lock
 
-from invoker.cache.CacheInterface import CacheInterface
+from cache.CacheInterface import CacheInterface
 
 
 class SynchronizedCache(CacheInterface):

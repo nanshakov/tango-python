@@ -1,3 +1,4 @@
+import logging
 import os
 
 
@@ -6,3 +7,5 @@ class RedisConfig:
         """Constructor"""
         self.host = os.getenv('REDIS_HOST', 'localhost')
         self.port = os.getenv('REDIS_PORT', '6379')
+        logging.debug(f"REDIS_HOST {self.host}")
+        logging.debug(f"REDIS_PORT {self.port}")

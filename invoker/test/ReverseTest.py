@@ -1,4 +1,4 @@
-from invoker.Invoker import reverse_number
+from Invoker import reverse_number
 import unittest
 
 
