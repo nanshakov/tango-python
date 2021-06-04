@@ -26,7 +26,7 @@ def ping():
 def send_to_redis(timeout, users):
     while True:
         logging.debug("send to redis action...")
-        [redis.set(i, int(uniform(1, 1000000))) for i in users]
+        [redis.set(user, int(uniform(1, 1000000))) for user in users]
         time.sleep(timeout)
 
 
