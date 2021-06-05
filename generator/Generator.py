@@ -15,7 +15,7 @@ logging.basicConfig(
     level=logging.DEBUG)
 
 redis_config = RedisConfig()
-redis = redis.Redis(host=redis_config.host, port=redis_config.port)
+redis = redis.Redis(host=redis_config.host, port=redis_config.port, password=redis_config.password)
 
 
 @app.route('/ping')

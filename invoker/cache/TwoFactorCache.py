@@ -14,7 +14,8 @@ class TwoFactorCache(CacheInterface):
         self.cache = SynchronizedCache(local_cache_config.ttl_in_sec)
         self.redis = redis.Redis(
             host=redis_config.host,
-            port=redis_config.port)
+            port=redis_config.port,
+            password=redis_config.password)
 
     def add(self, key, value):
         self.cache.add(key, value)
