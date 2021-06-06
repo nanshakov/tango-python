@@ -15,14 +15,46 @@ b) Второй сервис (INVOKER):
     В каждом API сделать один метод GET “/ping”, который выдаёт ответ {“pong”}
 
 # Архитектура
+## Invoker
+![Invoker](docs/Concept-Map-invoker.jpg)
+## Generator
+![Generator](docs/Concept-Map-generator.jpg)
+## файлы
+| Файл        | Описание        |
+| ------------- |:-------------:|
+| invoker/Invoker.py      | Invoker - реализуующий доступ к кешу |
+| generator/Generator.py      | Generator - генератор данных в редис      |
+| generator/GenerateUsers.py | Скрипт генерации users.txt      |
+| generator/users.txt | список из 100 пользователей      |
+| .../Dockerfile | Контейнеризация      |
+| .../.env | Переменные      |
+
 ## Локальный synchronized cache
+Для оптимального удаления истекщих ключей взяли OrderedDict, 
+т.к. K истекщих ключей всегда будут занимать K первых позиций. Удаляем за O(K)  
 
 # Запуск
-## howto
 ### Билд
 ```gcloud builds submit --tag gcr.io/PROJECT-ID/Invoker```
-```gcloud builds submit --tag gcr.io/PROJECT-ID/Generator```
 
-```gcloud builds submit --tag gcr.io/magnetic-guild-315806/invoker```
-```gcloud builds submit --tag gcr.io/magnetic-guild-315806/generator```
+```gcloud builds submit --tag gcr.io/PROJECT-ID/Generator```
+### Деплой
+Задеплоили на Cloud Run:
+![ Services – Cloud Run – My First Project – Google Cloud Platform](docs/Screenshot_2021-06-05-Services-Cloud Run.png)
+- Invoker https://invoker-wrfgripqtq-uc.a.run.app
+- Generator https://generator-wrfgripqtq-uc.a.run.app
+
+подняли Redis и создали Serverless VPC access:
+![Instance-details – Memorystore – My First Project – Google Cloud Platform](docs/Screenshot_2021-06-06-Instance-details.png)
 ## Примеры команд
+### Generator
+| Команда        | Результат        |
+| ------------- |:-------------:|
+| ```curl https://generator-wrfgripqtq-uc.a.run.app/ping```     | ```{pong}``` |
+  
+### Invoker
+| Команда        | Результат        |
+| ------------- |:-------------:|
+| ```curl https://generator-wrfgripqtq-uc.a.run.app/ping```     | ```{pong}``` |
+| ```curl https://invoker-wrfgripqtq-uc.a.run.app/getinfo?userId=1```     | ```{"error":"404 Not Found: Resource not found"}``` |
+| ```curl https://invoker-wrfgripqtq-uc.a.run.app/getinfo?userId=user936226```     | ```133``` |
