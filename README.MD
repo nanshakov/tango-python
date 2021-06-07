@@ -41,7 +41,7 @@ b) Второй сервис (INVOKER):
 ### Деплой
 Задеплоили на Cloud Run:
 
-![ Services – Cloud Run – My First Project – Google Cloud Platform](docs/Screenshot_2021-06-05-Services-Cloud Run.png)
+![ Services – Cloud Run – My First Project – Google Cloud Platform](docs/Screenshot_2021-06-05-Services-Cloud-Run.png)
 
 - Invoker https://invoker-wrfgripqtq-uc.a.run.app
 - Generator https://generator-wrfgripqtq-uc.a.run.app
