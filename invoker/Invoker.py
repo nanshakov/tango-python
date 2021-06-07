@@ -26,7 +26,7 @@ def getinfo():
     result = cache.get(user_id)
     if result is None:
         abort(404, description="Resource not found")
-    return reverse_number(result)
+    return result[::-1]
 
 
 @app.errorhandler(404)
@@ -36,12 +36,3 @@ def resource_not_found(e):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
-
-
-def reverse_number(n):
-    reversed = 0
-    while n != 0:
-        r = int(n % 10)
-        reversed = reversed * 10 + r
-        n = int(n / 10)
-    return reversed
