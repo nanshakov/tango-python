@@ -57,4 +57,4 @@ b) Второй сервис (INVOKER):
 | ------------- |:-------------:|
 | ```curl https://generator-wrfgripqtq-uc.a.run.app/ping```     | ```{pong}``` |
 | ```curl https://invoker-wrfgripqtq-uc.a.run.app/getinfo?userId=1```     | ```{"error":"404 Not Found: Resource not found"}``` |
-| ```curl https://invoker-wrfgripqtq-uc.a.run.app/getinfo?userId=user936226```     | ```133``` |
+| ```curl https://invoker-wrfgripqtq-uc.a.run.app/getinfo?userId=user48669```     | ```326145``` |
